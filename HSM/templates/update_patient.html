@@ -1,0 +1,109 @@
+{% extends "home.html" %}
+    {% block content %}
+    {% if not u %}
+    <h2><center>Update Patient Information</center></h2>
+    <div id="center">
+        <div class="hero">
+        <div class="nav-bar">
+            <div class="nav-logo">
+                
+            </div>
+    
+                <div class="main">
+                        
+                    <center>
+                        <form name="update"  method="POST" action="">
+                            <label>Patient ID (Must be 9 digit number)*:</label> 
+                            <input type="text" name="SSNID" pattern="[1-9]{1}[0-9]{8}" required><br>
+                            
+                            <h3 style="color:red">(*) Fields are compulsory</h3>
+                            <input type="submit" name="" value="Submit">
+                            <input type="reset" name="" value="Reset">
+                            
+                        </form>
+                    </center>
+                    </div>
+            </div>
+    
+                        
+        </div>
+        
+        
+        </div>
+        {% endif %}
+        {% if u %}
+        <div>
+            <center>
+            <form name="up" method="POST" action="updatepatient">
+            
+            <table border='0' width='480px' cellpadding='0' cellspacing='0' align='center'>
+                
+                <table border='2' width='480px' cellpadding='0' cellspacing='0' align='center'>
+                    <tr>
+                        <td align='center'>Patient SSN ID:</td>
+                        <td>{{ u.SSN_ID}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Patient ID:</td>
+                        <td>{{ u.PatientID}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+
+                    <tr>
+                        <td align='center'>Old Patient Name:</td>
+                        <td>{{ u.Name}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>New Patient Name:</td>
+                        <td><input type="text" name="name" width="50%"></td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Old Patient Address:</td>
+                        <td>{{u.Address}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>New Patient Address:</td>
+                        <td><input type="text" name="add"></td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Old Patient Age:</td>
+                        <td>{{u.Age}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>New Patient Age:</td>
+                        <td><input type="text" name="age" maxlength="3"></td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Old Patient DOJ:</td>
+                        <td>{{u.DOJ}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>New Patient DOJ:</td>
+                        <td><input type="date" name="date"></td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    </table>
+                    </table>
+                    
+                    
+                    <input type="submit" value="submit"><input type="reset" value="Reset">
+                    
+                    
+                
+                </form>
+            </center>
+               </div>
+                    
+        
+           
+        {% endif %}
+    
+{% endblock %}

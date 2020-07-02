@@ -1,0 +1,366 @@
+{% extends "home.html" %}
+    {% block content %}
+    {% if not c %}
+    <h2><center>Search Patient </center></h2>
+    <div id="center">
+        <div class="hero">
+        <div class="nav-bar">
+            <div class="nav-logo">
+                
+            </div>
+    
+                <div class="main">
+                        
+                    <center>
+                        <form name="search"  method="POST" action="">
+                            <label>Patient ID (Must be 9 digit number)*:</label> 
+                            <input type="text" name="SSNID" pattern="[1-9]{1}[0-9]{8}" required><br>
+                            
+                            <h3 style="color:red">(*) Fields are compulsory</h3>
+                            <input type="submit" name="" value="Submit">
+                            <input type="reset" name="" value="Reset">
+                            
+                        </form>
+                    </center>
+                    </div>
+            </div>
+    
+                        
+        </div>
+        
+        
+        </div>
+        {% endif %}
+        {% if c and k and not d %}
+        <center><h2>Patient Billing</h2>
+            <form name="getPatient2" method="POST" action="">
+                <center>
+                    <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+        
+            
+                    <tr>
+                        <th >Patient ID</th>
+                        <th >Patient SSN ID</th>
+                        <th >Name</th>
+                        <th >Age</th>
+                        <th >Address</th>
+                        <th >DOJ</th>
+                        <th>Date of Discharge</th>
+                        <th >Type of Room</th>
+                        
+                    </tr>
+                    
+                    
+        
+                    <!-- All Patient Details -->
+                    
+                    <tr>
+                        <td >{{ c.PatientID }}</td>
+                        <td>{{ c.SSN_ID }}</td>
+                        <td>{{ c.Name}}</td>
+                        <td>{{ c.Age }}</td>
+                        <td>{{ c.Address }}</td>
+                        <td>{{ c.DOJ }}</td>
+                        <td>{{date2}}</td>
+                        <td>{{ c.BedType }}</td>
+                                        
+                    </tr>
+                
+                    
+                    
+                </table>
+                No of Days:{{Nday}} &nbsp;&nbsp;  Bill for Rooms:{{rbill}}
+
+    
+    
+                       
+                        <center><h2>Medicine Charges</h2></center>
+                        <table style="border:2px solid black;margin-left:auto;margin-right:auto;padding:2px;border-spacing:20px 50px; ">
+                    
+                    
+                            <tr>
+                                <th >Medicine</th>
+                                <th >Quantity</th>
+                                <th>Rate</th>
+                                <th>Amount</th>
+                                
+                            </tr>
+                            
+                            
+                
+                            <!-- All Patient Details -->
+                            {% for i in k %}
+                            
+                            {% for j in r2 %}
+                            {% if i.MedicineID == j.MedicineID %}
+                            <tr>
+                                <td >{{ j.MedName }}</td>
+                                <td>{{ i.Quantity }}</td>
+                               
+                                <td>{{ j.Rate }}</td>
+                                <td>{{ j.Rate * i.Quantity }}</td>          
+                            </tr>
+                            
+                            
+                            {% endif %}
+                            {% endfor %}    
+                            {% endfor %}                    
+                        </table>
+                        Bill for Medicines:{{mcharge}}
+                        Grand Total:{{gt}}
+                        <input type="hidden" name="h5" value="{{c.PatientID}}" required>
+                        <center><input type="submit" value="Confirm"><input type="reset" value="Reset"></center>
+                        </center>
+                    </form>
+    {% endif %}
+
+
+
+
+        {% if c and d and not k %}
+        <center><h2>Patient Billing</h2></center>
+                        <form name="getPatient" method="POST" action="">
+                            <center>
+                                <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+        
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Patient SSN ID</th>
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >DOJ</th>
+                                    <th>Date of Discharge</th>
+                                    <th >Type of Room</th>
+                                    
+                                </tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.PatientID }}</td>
+                                    <td>{{ c.SSN_ID }}</td>
+                                    <td>{{ c.Name}}</td>
+                                    <td>{{ c.Age }}</td>
+                                    <td>{{ c.Address }}</td>
+                                    <td>{{ c.DOJ }}</td>
+                                    <td>{{date2}}</td>
+                                    <td>{{ c.BedType }}</td>
+                                                    
+                                </tr>
+                            
+                                
+                                
+                            </table>
+                            <center>No of Days:{{Nday}}  &nbsp;&nbsp; Bill for Rooms:{{rbill}}</center> 
+                            <center><h2>Diagnostics Charges</h2></center>
+                            <table style="border:2px solid black;margin-left:auto;margin-right:auto;padding:2px;border-spacing:20px 50px; ">
+                        
+                        
+                                <tr>
+                                    <th >Name of test</th>
+                                    <th>Amount</th>
+                                    
+                                </tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                               
+                                
+                                {% for j in r %}
+                                <tr>
+                                    <td >{{ j.TestName }}</td>
+                                    
+                                    <td>{{ j.TestCharge }}</td>          
+                                </tr>
+                                
+                                
+                                
+                                   
+                                {% endfor %}                    
+                            </table>
+                     <center>Bill for Diagnostics:{{dcharge}}
+        
+                
+                            Grand Total:{{gt}}</center>
+                            <input type="hidden" name="h5" value="{{c.PatientID}}" required>
+                            <center><input type="submit" value="Confirm"><input type="reset" value="Reset"></center>
+                        </center>
+                        </form>
+                    
+                   
+                {% endif %}
+        
+        {% if c and (not d and not k) %}
+        <center><h2>Patient Billing</h2></center>
+                        <form name="getPatient" method="POST" action="">
+                            <center>
+                            <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Patient SSN ID</th>
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >DOJ</th>
+                                    <th>Date of Discharge</th>
+                                    <th >Type of Room</th>
+                                    
+                                </tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.PatientID }}</td>
+                                    <td>{{ c.SSN_ID }}</td>
+                                    <td>{{ c.Name}}</td>
+                                    <td>{{ c.Age }}</td>
+                                    <td>{{ c.Address }}</td>
+                                    <td>{{ c.DOJ }}</td>
+                                    <td>{{date2}}</td>
+                                    <td>{{ c.BedType }}</td>
+                                                    
+                                </tr>
+                            
+                                
+                                
+                            </table>
+                            <center>No of Days:{{Nday}}  &nbsp;&nbsp; Bill for Rooms:{{rbill}}</center> 
+                            <input type="hidden" name="h5" value="{{c.PatientID}}" required>     
+                            <center><input type="submit" value="Confirm"><input type="reset" value="Reset"></center>  
+                        </center>      
+                    </form>
+                    
+                
+            
+                
+        {% endif %}
+        {% if c and d and k %}
+                <center><h2>Patient Billing</h2>
+                <form name="getPatient2" method="POST" action="">
+                    <center>
+                        <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+
+                
+                
+                        <tr>
+                            <th >Patient ID</th>
+                            <th >Patient SSN ID</th>
+                            <th >Name</th>
+                            <th >Age</th>
+                            <th >Address</th>
+                            <th >DOJ</th>
+                            <th>Date of Discharge</th>
+                            <th >Type of Room</th>
+                            
+                        </tr>
+                        
+                        
+            
+                        <!-- All Patient Details -->
+                        
+                        <tr>
+                            <td >{{ c.PatientID }}</td>
+                            <td>{{ c.SSN_ID }}</td>
+                            <td>{{ c.Name}}</td>
+                            <td>{{ c.Age }}</td>
+                            <td>{{ c.Address }}</td>
+                            <td>{{ c.DOJ }}</td>
+                            <td>{{date2}}</td>
+                            <td>{{ c.BedType }}</td>
+                                            
+                        </tr>
+                    
+                        
+                        
+                    </table>
+                    No of Days:{{Nday}} &nbsp;&nbsp;  Bill for Rooms:{{rbill}}
+
+        
+        
+                           
+                            <center><h2>Medicine Charges</h2></center>
+                            <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Medicine</th>
+                                    <th >Quantity</th>
+                                    <th>Rate</th>
+                                    <th>Amount</th>
+                                    
+                                </tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                {% for i in k %}
+                                
+                                {% for j in r2 %}
+                                {% if i.MedicineID == j.MedicineID %}
+                                <tr>
+                                    <td >{{ j.MedName }}</td>
+                                    <td>{{ i.Quantity }}</td>
+                                   
+                                    <td>{{ j.Rate }}</td>
+                                    <td>{{ j.Rate * i.Quantity }}</td> 
+                                             
+                                </tr>
+                                
+                                
+                                {% endif %}
+                                {% endfor %}    
+                                {% endfor %}                    
+                            </table>
+                           &nbsp;&nbsp;&nbsp;&nbsp;<p>Bill for Medicines:{{mcharge}}</p> 
+                            
+                            
+                    <center><h2>Diagnostics Charges</h2></center>
+                     <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                
+                
+                        <tr>
+                            <th >Name of test</th>
+                            <th>Amount</th>
+                            
+                        </tr>
+                        
+                        
+            
+                        <!-- All Patient Details -->
+                       
+                        
+                        {% for j in r %}
+                        <tr>
+                            <td >{{ j.TestName }}</td>
+                            
+                            <td>{{ j.TestCharge }}</td>          
+                        </tr>
+                        
+                        
+                        
+                           
+                        {% endfor %}                    
+                    </table>
+                    Bill for Diagnostics:{{dcharge}}
+
+        
+                    Grand Total:{{gt}}
+                    <input type="hidden" name="h5" value="{{c.PatientID}}" required>
+                    <center><input type="submit" value="Confirm"><input type="reset" value="Reset"></center>
+                    </center>
+                </form>
+            
+           
+        {% endif %}
+        
+{% endblock %}

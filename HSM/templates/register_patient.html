@@ -1,0 +1,85 @@
+{% extends "home.html" %}
+    {% block content %}
+   <center> <table border='0' width='480px' cellpadding='0' cellspacing='0' align='center'>
+        <center><tr>
+           <td><h2><center>Patient Registration</center></h2></td>
+        </tr><center></center>
+        
+    <form name="reg" action="" method="POST">
+        <table border='2' width='480px' cellpadding='0' cellspacing='0' align='center'>
+            <tr>
+                <td align='center'>Patient SSNID(*Must be 9 digit):</td>
+                <td><input type="text" name="SSNID" pattern="[1-9]{1}[0-9]{8}" required></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>
+            <tr>
+                <td align='center'>Patient Name(*):</td>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>
+            <tr>
+                <td align='center'>Patient Age(*):</td>
+                <td><input type="text" name="age" maxlength="3" required></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>
+            <tr>
+                <td align='center'>Date of Admission(*):</td>
+                <td><input type="date" name="date" required></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>
+            <tr>
+                <td align='center'>Type of Bed(*):</td>
+                <td><select name="type" required>
+                    <option value="" selected disabled hidden>Select an option</option>
+                    <option value="General Ward">General Ward</option>
+                    <option value="Semi sharing">Semi Sharing</option>
+                    <option value="Single room">Single Room</option>
+                   </select></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>
+            <tr>
+                <td align='center'>Address(*):</td>
+                <td><textarea name="add" cols="30" rows="5" required></textarea></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>
+            <tr>
+                <td align='center'>State(*):</td>
+                <td><select name="state" required>
+                    <option value="" selected disabled hidden>Select an option</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="West Bengle">West Bengle</option>
+                    <option value="Kerla">Kerla</option>
+                    <option value="Asam">Asam</option>
+                    <option value="Karnatak">Karnatak</option>
+                    <option value="Jammu Kasmir">Jammu Kasmir</option>
+                    </select></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>           
+            <tr>
+                <td align='center'>City(*):</td>
+                <td><select name="city" required>
+                    <option value="" selected disabled hidden>Select an option</option>
+                    <option value="Khordha">Khordha</option>
+                    <option value="BBSR">BBSR</option>
+                    <option value="Cuttack">Cuttack</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Hydrabad">Hydrabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    </select></td>
+            </tr>
+            <tr> <td>&nbsp;</td> </tr>           
+
+        
+        </table>
+    </table>
+    
+
+
+
+
+        <input type="submit" value="Submit" >
+        <input type="reset" value="Reset">
+    </form>
+    {% endblock %}

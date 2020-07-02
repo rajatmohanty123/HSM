@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+    {% block content %}
+    {% if not k %}
+    <h2><center>Issue Medicine</center></h2>
+    <center><form name="reg" action="" method="POST">
+        
+        Medicine Name(*):<input type="text" name="name" required><br><br>
+       
+        
+        <input type="submit" value="Check Availability" >
+        <input type="reset" value="Reset">
+    </form></center>
+    {% endif %}
+    {% if k %}
+    <center><form name="reg2" action="" method="POST">
+        
+        Quantity(*):<input type="text" name="qty" required><br><br>
+        <input type="hidden" name="h1" value="{{ k.MedicineID }}" required>
+       
+        
+        <input type="submit" value="Issue" >
+        <input type="reset" value="Reset">
+    </form></center>
+    {% endif %}
+    {% endblock %}

@@ -1,0 +1,154 @@
+{% extends "home.html" %}
+    {% block content %}
+    {% if not c %}
+    <h2><center>Search Patient </center></h2>
+    <div id="center">
+        <div class="hero">
+        <div class="nav-bar">
+            <div class="nav-logo">
+                
+            </div>
+    
+                <div class="main">
+                        
+                    <center>
+                        <form name="search"  method="POST" action="">
+                            <label>Patient ID (Must be 9 digit number)*:</label> 
+                            <input type="text" name="SSNID" pattern="[1-9]{1}[0-9]{8}" required><br>
+                            
+                            <h3 style="color:red">(*) Fields are compulsory</h3>
+                            <input type="submit" name="" value="Submit">
+                            <input type="reset" name="" value="Reset">
+                            
+                        </form>
+                    </center>
+                    </div>
+            </div>
+    
+                        
+        </div>
+        
+        
+        </div>
+        {% endif %}
+        {% if c and not d %}
+        <center><h2>Patient with No Diagnostics</h2></center>
+                        <form name="getPatient" method="POST" action="adddiagnostics">
+                            <center>
+                                <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Patient SSN ID</th>
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >DOJ</th>
+                                    <th >Type of Room</th>
+                                    
+                                </tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.PatientID }}</td>
+                                    <td>{{ c.SSN_ID }}</td>
+                                    <td>{{ c.Name}}</td>
+                                    <td>{{ c.Age }}</td>
+                                    <td>{{ c.Address }}</td>
+                                    <td>{{ c.DOJ }}</td>
+                                    <td>{{ c.BedType }}</td>
+                                                    
+                                </tr>
+                            
+                                
+                                
+                            </table>        
+                            <center><input type="submit" value="Add Diagnostics"><input type="reset" value="Reset"></center>   
+                            </center>     
+                    </form>
+                    
+                
+            
+                
+        {% endif %}
+        {% if c and d %}
+                <center><h2>Patient with Diagnostics Status</h2>
+                <form name="getPatient2" method="POST" action="adddiagnostics">
+                    <center>
+                        <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                
+                
+                        <tr>
+                            <th >Patient ID</th>
+                            <th >Patient SSN ID</th>
+                            <th >Name</th>
+                            <th >Age</th>
+                            <th >Address</th>
+                            <th >DOJ</th>
+                            <th >Type of Room</th>
+                            
+                        </tr>
+                        
+                        
+            
+                        <!-- All Patient Details -->
+                        
+                        <tr>
+                            <td >{{ c.PatientID }}</td>
+                            <td>{{ c.SSN_ID }}</td>
+                            <td>{{ c.Name}}</td>
+                            <td>{{ c.Age }}</td>
+                            <td>{{ c.Address }}</td>
+                            <td>{{ c.DOJ }}</td>
+                            <td>{{ c.BedType }}</td>
+                                            
+                        </tr>
+                    
+                        
+                        
+                    </table>
+        
+
+
+                   
+                    <center><h2>Diagnostics Conducted</h2></center>
+                    
+                        <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                
+                
+                        <tr>
+                            <th >Name of test</th>
+                            <th>Amount</th>
+                            
+                        </tr>
+                        
+                        
+            
+                        <!-- All Patient Details -->
+                       
+                        
+                        {% for j in r %}
+                        <tr>
+                            <td >{{ j.TestName }}</td>
+                            
+                            <td>{{ j.TestCharge }}</td>          
+                        </tr>
+                        
+                        
+                        
+                           
+                        {% endfor %}                    
+                    </table>
+                    
+                    <center><input type="submit" value="Add Diagnostics"><input type="reset" value="Reset"></center>
+                    </center>
+                </form>
+            
+           
+        {% endif %}
+    
+{% endblock %}

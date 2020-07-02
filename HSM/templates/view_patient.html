@@ -1,0 +1,45 @@
+{% extends "home.html" %}
+{% block content %}
+<center><h1>Patient Status</h1></center>
+<center>
+        
+<table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                
+                
+                <tr>
+                    <th >Patient ID</th>
+                    <th >Patient SSN ID</th>
+                    <th >Name</th>
+                    <th >Age</th>
+                    <th >Address</th>
+                    <th >DOJ</th>
+                    <th >Type of Room</th>
+                    <th>Status</th>
+                    
+                </tr>
+                
+                
+    
+                <!-- All Patient Details -->
+                {% for i in d %}
+                <tr>
+                    <td >{{ i.PatientID }}</td>
+                    <td>{{ i.SSN_ID }}</td>
+                    <td>{{ i.Name}}</td>
+                    <td>{{ i.Age }}</td>
+                    <td>{{ i.Address }}</td>
+                    <td>{{ i.DOJ }}</td>
+                    <td>{{ i.BedType }}</td>
+                    <td>{{i.Status}}</td>                
+                </tr>
+                {% endfor %}
+                
+                
+            </table>
+        
+ 
+        
+    
+        </center>            
+{% endblock %}
+    

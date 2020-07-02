@@ -1,0 +1,67 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet"  href="static/css/style14.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style2.css">
+    
+	<title>HOSPITAL MANAGEMENT SYSTEM</title>
+</head>
+
+<div class="header">
+    <div id="head"><h1><span>ABC</span> HOSPITAL</h1>
+    </div>
+    <div class="menu-bar">
+        <ul>
+            <li><a href="{{ url_for('auth.Home') }}">Home</a></li>
+            <li><a href="#">PATIENT</a><i class="fa fa-chevron-down"></i>
+                <div class="sub-menu-1">
+                    <ul>
+                        {% if session['username']=="REG1234567" %}
+                        <li><a href="{{ url_for('auth.register_patient') }}">REGISTER PATIENT</a></li>
+                        <li><a href="{{ url_for('auth.update_patient2') }}">UPDATE PATIENT</a></li>
+                        <li><a href="{{ url_for('auth.delete_patient2') }}">DELETE PATIENT</a></li>
+                        <li><a href="{{ url_for('auth.view_patient') }}">VIEW PATIENT</a></li>
+                        <li><a href="{{ url_for('auth.search_patient2') }}">SEARCH PATIENT</a></li>
+                        <li><a href="{{ url_for('auth.billing_patient2') }}">BILLING PATIENT</a></li>
+                        {% else %}
+                        <li><a href="javascript:void(0)">DISABLED</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">PHARMACY</a><i class="fa fa-chevron-down"></i>
+                <div class="sub-menu-1">
+                    <ul>
+                        {% if session['username']=="PMC1234567" %}
+                        <li><a href="{{ url_for('auth.issue_medicine') }}">ISSUE MEDICINE</a></li>
+
+                        <!--<li><a href="#">link2</a></li>
+                        <li><a href="#">link3</a></li>-->
+                        {% else %}
+                        <li><a href="javascript:void(0)">DISABLED</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+            <!--<li><a href="#"></a><i class="fa fa-chevron-down"></i></li>-->
+            <li><a href="#">DIAGNOSTICS</a><i class="fa fa-chevron-down"></i>
+                <div class="sub-menu-1">
+                    <ul>
+                        {% if session['username']=="DIG1234567" %}
+                        <li><a href="{{ url_for('auth.add_diagnostics') }}">ADD DIAGNOSTICS</a></li>
+                        <!--<li><a href="#">link2</a></li>
+                        <li><a href="#">link3</a></li>-->
+                        {% else %}
+                        <li><a href="javascript:void(0)">DISABLED</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+            <li><a href="{{ url_for('auth.logout') }}" class="nav-link {% if logout %}active{% endif %}">Logout</a></li>
+        </ul>
+    </div>
+
+    
+</div> 
+

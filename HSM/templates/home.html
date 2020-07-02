@@ -1,0 +1,20 @@
+<body>
+<div class="container">
+    {% include "includes/header.html" %}
+
+    {% if session['username'] %}
+    <span class="user"><h1><center>Welcome, {{ session['username'] }}</center></h1></span>
+    {% endif %}
+    <center>{% include "includes/_message.html" %}</center>
+    
+    {% block content %}
+    
+      
+    {% endblock %}
+    
+
+</div>
+
+
+</body>
+

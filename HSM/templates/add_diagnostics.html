@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+    {% block content %}
+    {% if not k %}
+    <h2><center>Add Diagnostics</center></h2>
+    <center><form name="reg" action="" method="POST">
+        
+        Diagnostics Name(*):<select name="name" required>
+            <option value="" selected disabled hidden>Select an option</option>
+            <option value="Heart">Heart</option>
+            <option value="Liver">Liver</option>
+            <option value="Lipid">Lipid</option>
+            <option value="CBP">CBP</option>
+            </select><br><br>
+        
+        <input type="submit" value="View Price" >
+        <input type="reset" value="Reset">
+    </form></center>
+    {% endif %}
+    {% if k %}
+    <center><form name="reg2" action="" method="POST">
+       
+        <h2>Test Charge:{{ k.TestCharge }}</h2>
+        <input type="hidden" name="h1" value="{{ k.TestID }}" required>
+       
+        
+        <input type="submit" value="Add" >
+        <input type="reset" value="Reset">
+    </form></center>
+    {% endif %}
+    {% endblock %}

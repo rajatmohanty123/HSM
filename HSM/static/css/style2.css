@@ -1,0 +1,6 @@
+input[type=submit],[type=reset] {
+    width: 10%;
+    padding: 5px 12px;
+    margin: 5px 2px;
+    box-sizing: border-box;  
+}

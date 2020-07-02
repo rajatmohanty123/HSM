@@ -1,0 +1,62 @@
+*
+{
+	padding: 0;
+	margin: 0;
+}
+body
+{
+	background: blue;
+	
+}
+#center
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	}
+.login
+{
+	
+	display: flex;
+	flex-direction: column;
+	border:2px solid black;
+	width: 130%;
+	height:45vh;
+	background-color:whitesmoke;
+
+
+}
+#head
+{
+	font-size: 1rem;
+	padding: 5px 10px;
+	color: white;
+	background-color: black;
+
+}
+.login .content
+{
+	margin: 20px 50px;
+}
+ .input-area
+{
+	margin: 20px;
+	display: block;
+	padding: 10px;
+	width: 70%;
+	border-color: black;
+	border-radius: 2px;
+}
+ .primary
+{
+	border:2px solid black;
+	background: white;
+	color: black;
+	border-radius: 3px;
+	width: 30%;
+	height: 25%;
+	margin: 20px 100px;
+	
+
+}

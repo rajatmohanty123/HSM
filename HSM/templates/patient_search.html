@@ -1,0 +1,99 @@
+{% extends "home.html" %}
+    {% block content %}
+    {% if not c %}
+    <h2><center>Search Patient </center></h2>
+    <div id="center">
+        <div class="hero">
+        <div class="nav-bar">
+            <div class="nav-logo">
+                
+            </div>
+    
+                <div class="main">
+                        
+                    <center>
+                        <form name="search"  method="POST" action="">
+                            <label>Patient ID (Must be 9 digit number)*:</label> 
+                            <input type="text" name="SSNID" pattern="[1-9]{1}[0-9]{8}" required><br>
+                            
+                            <h3 style="color:red">(*) Fields are compulsory</h3>
+                            <input type="submit" name="" value="Submit">
+                            <input type="reset" name="" value="Reset">
+                            
+                        </form>
+                    </center>
+                    </div>
+            </div>
+    
+                        
+        </div>
+        
+        
+        </div>
+        {% endif %}
+        {% if c %}
+        <body>
+            <center>
+ 
+            <table border='0' width='480px' cellpadding='0' cellspacing='0' align='center'>
+                
+                <table border='2' width='480px' cellpadding='0' cellspacing='0' align='center'>
+                    <tr>
+                        <td align='center'>Patient SSN ID:</td>
+                        <td>{{ c.SSN_ID}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Patient ID:</td>
+                        <td>{{ c.PatientID}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Patient Name:</td>
+                        <td>{{ c.Name}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Address</td>
+                        <td>{{ c.Address}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Age:</td>
+                        <td>{{ c.Age}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Date of Join:</td>
+                        <td>{{ c.DOJ}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>Type of Bed:</td>
+                        <td>{{ c.BedType}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>State:</td>
+                        <td>{{ c.State}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    <tr>
+                        <td align='center'>City:</td>
+                        <td>{{ c.City}}</td>
+                    </tr>
+                    <tr> <td>&nbsp;</td> </tr>
+                    
+                    
+                    
+                    
+                </table>
+                
+            
+        </table>
+    </center>
+        </body>
+    
+        {% endif %}
+    
+{% endblock %}
