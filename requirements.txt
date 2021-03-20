@@ -27,7 +27,7 @@ Flask-PyMongo==2.3.0
 Flask-SocketIO==4.2.1
 Flask-SQLAlchemy==2.3.2
 Flask-WTF==0.14.3
-Jinja2==2.11.2
+Jinja2==2.11.3
 joblib==0.13.2
 MarkupSafe==1.1.0
 marshmallow==2.18.1
